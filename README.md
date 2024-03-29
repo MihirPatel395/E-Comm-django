@@ -1,1 +1,1 @@
-# E-Comm-django
+# E-Commerce Site build with django framework to hangle bakckend
