@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="row">
+<div class="col-3 text-end">
+<h4 style="cursor:pointer;">Edit your Profile</h4>
+</div>
+    <div class="col text-start " style="margin-left:120px;">
+        <img class="rounded" src="{{customer.imgUrl}}" alt="">
+        <h2>Username: {{customer.user.username}}</h2>
+        <h2>Email: {{customer.email}}</h2>
+        <a class="mt-4 mb-2 btn border-secondary rounded-pill py-3 px-5" href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+{% else %}
+<div class="text-center">
+<h2>You need to <a href="{% url 'signin' %}">Sign in</a> or <a href="{% url 'signup' %}">Sign Up</a></h2>
+<a class="mt-4 mb-2 btn border-secondary rounded-pill py-3 px-5" href="{% url 'index' %}">Go Back To Home</a>
+</div>
+{% endif %}
+{% endblock content %}

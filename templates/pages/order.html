@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}
+Order
+{% endblock title %}
+
+{% block content %}
+
+
+{% if request.user.is_authenticated %}
+<!-- Cart Page Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        {% if all_items %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Products</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item_ in all_items %}
+                {% for item in item_ %}
+                    <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{{item.product.imgUrl}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                            </div>
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">{{item.product.name}}</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs {{item.product.price|floatformat:2 }}</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <span class="text-center mx-3" >{{item.quantity}}</span>
+                                <div class="input-group-btn">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs {{item.get_total|floatformat:2}} </p>
+                        </td>
+                        <td>
+                            {% if item.order.complete  %} 
+                            <p class="mb-0 mt-4 badge bg-primary"> 
+                            Completed  
+                            </p>
+                            {% else %} 
+                            <p class="mb-0 mt-4 badge bg-warning"> 
+                            padding... 
+                            </p>
+                            {% endif %} 
+                        </td>
+                    </tr>
+                
+                {% endfor %}
+                {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <h3 class="text-center"> You don't have an Order <hr>
+        <a class="mt-2 mb-2 btn border-secondary rounded-pill py-3 px-5" href="{% url 'index' %}">Coutinue Shopping</a></h3>
+        {% endif %}
+        
+    </div>
+</div>
+<!-- Cart Page End -->
+
+{% else %}
+<h3 class="text-center" >You don't have an Order <hr> To Place Order, You need to 
+<a href="{% url 'signin' %}">Sign in</a> or <a href="{% url 'signup' %}">Sign Up</a></h3>
+{% endif %}
+
+
+{% endblock content %}
