@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h5>Category List</h5>
+<form action="" method="POST">
+{% csrf_token %}
+<div class="form-floating">
+  <select class="form-select my-3" name="category_name" id="floatingSelect" aria-label="Floating label select example">
+    <option selected>Selected</option>
+    {% for category in categories %}
+    <option value={{category.name}}>{{category.name}}</option>
+    {% endfor %}
+  </select>
+  <label for="floatingSelect">Categories</label>
+</div>
+<label for="">Product Name</label>
+<input type="text" name="name"/>
+<label for="">description</label>
+<input type="text" name="description"/>
+<label for="">price</label>
+<input type="text" name="price"/>
+<input type="submit" value="Add Product"/>
+</form>
+{% endblock content %}
