@@ -30,7 +30,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app']
 
-DATABASES['default']=dj_database_url.parse("postgres://e_comm_django_postgre_hbt9_user:nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI@dpg-co7f32fsc6pc73c65jb0-a.oregon-postgres.render.com/e_comm_django_postgre_hbt9")
+DATABASES['default']=dj_database_url.parse("postgres://e_comm_django_postgre_hbt9_user:nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI@dpg-co7f32fsc6pc73c65jb0-a/e_comm_django_postgre_hbt9")
 
 # Application definition
 
