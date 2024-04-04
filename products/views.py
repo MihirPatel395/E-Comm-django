@@ -245,4 +245,20 @@ def placeOrder(request,pk):
         return redirect('checkout')
     messages.success(request,'You have to login to place an order.')
     return redirect('index')
+
+def addProduct(reqeust):
+    categories=Category.objects.all()
+    if reqeust.method =="POST":
+        post=reqeust.POST
+        category=Category.objects.get(name=post.get('category_name'))
+        Products.objects.create(
+            category_name=category,
+            name=post.get('name'),
+            description=post.get('description'),
+            price=post.get('price'))
+        messages.success(reqeust,'Product added successfully...')
+        return redirect('index')
+
+    return render(reqeust,'pages/addProduct.html',{'categories':categories})
+
     
