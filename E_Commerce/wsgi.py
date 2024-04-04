@@ -15,5 +15,3 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'E_Commerce.settings')
 
 application = get_wsgi_application()
 
-#vercel look for app veriable for application 
-app=application
