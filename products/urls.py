@@ -8,6 +8,7 @@ urlpatterns=[
     
     # product
     path('updateItem/',views.updateItem,name='updateItem'),
+    path('addProduct/',addProduct,name='addProduct'),
     path('product/<int:pk>/',views.product_view,name='product'),
     
     # cart & checkout
