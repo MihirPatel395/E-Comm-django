@@ -88,7 +88,7 @@ DATABASES = {
 }
 
 database_url=os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url).split(" ")
+DATABASES['default']=dj_database_url.parse(database_url)
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
 
