@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'E_Commerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.psql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'e_comm_django_postgre_hbt9',
         'HOST': 'dpg-co7f32fsc6pc73c65jb0-a',
-        'User':'e_comm_django_postgre_hbt9_user',
-        'Password':'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
+        'USER':'e_comm_django_postgre_hbt9_user',
+        'PASSWORD':'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
         'PORT':5432
     }
 }
