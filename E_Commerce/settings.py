@@ -82,13 +82,15 @@ WSGI_APPLICATION = 'E_Commerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.psql',
+        'NAME': 'e_comm_django_postgre_hbt9',
+        'HOST': 'dpg-co7f32fsc6pc73c65jb0-a',
+        'User':'e_comm_django_postgre_hbt9_user',
+        'Password':'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
+        'PORT':5432
     }
 }
 
-database_url=os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
 
