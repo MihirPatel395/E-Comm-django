@@ -94,7 +94,7 @@ def profile(request):
             return redirect('index')
             pass
 
-    return render(request,'pages/profile.html',context)
+    return render(request,'pages/Profile.html',context)
 
 def updateItem(request):
     data=json.loads(request.body)
