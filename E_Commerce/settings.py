@@ -87,7 +87,7 @@ DATABASES = {
         'HOST': 'e_comm_django_postgre_hbt9',
         'USER': 'e_comm_django_postgre_hbt9_user',
         'PASSWORD': 'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
-        'PORT': 5432,
+        'PORT': '5432',
     }
 }
 
