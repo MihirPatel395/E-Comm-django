@@ -26,11 +26,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = 'django-insecure-9db6puw46zrzzif89mcjjr8o@f6@1_=+ye$=#o#2=66t35%qq2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG",False)
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
+# ALLOWED_HOSTS = ['.vercel.app']
 
-DATABASES['default']=dj_database_url.parse("postgres://e_comm_django_postgre_hbt9_user:nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI@dpg-co7f32fsc6pc73c65jb0-a/e_comm_django_postgre_hbt9")
 
 # Application definition
 
@@ -87,6 +88,12 @@ DATABASES = {
     }
 }
 
+database_url=os.environ.get("DATABASE_URL")
+DATABASES['default']=dj_database_url.parse(database_url)
+# right now database to postgre host on render.app
+# alter database to postgre host on railway.app
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -124,6 +131,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR/'static']
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
