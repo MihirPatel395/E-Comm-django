@@ -28,8 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG",False)
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['.vercel.app']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -80,16 +80,19 @@ WSGI_APPLICATION = 'E_Commerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'e_comm_django_postgre_hbt9',
-        'HOST': 'dpg-co7f32fsc6pc73c65jb0-a',
-        'USER': 'e_comm_django_postgre_hbt9_user',
-        'PASSWORD': 'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'e_comm_django_postgre_hbt9',
+#         'HOST': 'dpg-co7f32fsc6pc73c65jb0-a',
+#         'USER': 'e_comm_django_postgre_hbt9_user',
+#         'PASSWORD': 'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
+#         'PORT': '5432',
+#     }
+# }
+
+database_url=os.environ.get("DATABASE_URL")
+DATABASES['default']=dj_database_url.parse(database_url)
 
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
