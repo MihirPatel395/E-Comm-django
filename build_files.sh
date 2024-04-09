@@ -1,6 +1,6 @@
 echo "BUILD Start"
 # build_files.sh
-python3.9 -m pip install -r requirements.txt
+pip install -r requirements.txt
 
 # echo "Migrating Databases"
 # python3 manage.py makemigrations --noinput
