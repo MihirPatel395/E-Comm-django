@@ -31,7 +31,8 @@ DEBUG = os.environ.get("DEBUG",False)
 # ALLOWED_HOSTS = ["https://e-comm-django.onrender.com"]
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
 ALLOWED_HOSTS = ['.vercel.app']
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') 
+if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
