@@ -92,8 +92,14 @@ WSGI_APPLICATION = 'E_Commerce.wsgi.application'
 # }
 
 database_url=os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
-
+# DATABASES['default']=dj_database_url.parse(database_url)
+DATABASES = {
+    'default': dj_database_url.parse(
+        database_url,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
 
