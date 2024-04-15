@@ -28,8 +28,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG",False)
 
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
+# ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,26 +82,20 @@ WSGI_APPLICATION = 'E_Commerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'e_comm_django_postgre_hbt9',
-#         'HOST': 'dpg-co7f32fsc6pc73c65jb0-a',
-#         'USER': 'e_comm_django_postgre_hbt9_user',
-#         'PASSWORD': 'nTQwUFMmtW32bKPU9qWWbJduNCqz6sPI',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 
 database_url=os.environ.get("DATABASE_URL")
 # DATABASES['default']=dj_database_url.parse(database_url)
 DATABASES = {
-    'default': dj_database_url.parse(
-        database_url,
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+	"default": dj_database_url.parse(os.environ.get("database_external_url"))
 }
+
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
 
@@ -142,6 +138,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR/'static']
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
