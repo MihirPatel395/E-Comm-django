@@ -90,9 +90,9 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-	"default": dj_database_url.parse(os.environ.get("database_external_url"))
-}
+# DATABASES = {
+# 	"default": dj_database_url.parse(os.environ.get("database_external_url"))
+# }
 
 # right now database to postgre host on render.app
 # alter database to postgre host on railway.app
